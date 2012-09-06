@@ -1,0 +1,4 @@
+# app/config/routing.yml
+mainStart:
+	pattern: /
+	defaults: { _controller: ifztowerofdimensionsBundle:login:Init }
