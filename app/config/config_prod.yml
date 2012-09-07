@@ -17,5 +17,3 @@ monolog:
             type:  stream
             path:  %kernel.logs_dir%/%kernel.environment%.log
             level: debug
-framework:
-    router: { resource: "%kernel.root_dir%/config/routing_prod.yml" }

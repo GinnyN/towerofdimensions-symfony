@@ -3,8 +3,6 @@
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
-date_default_timezone_set("America/Santiago"); 
-
 class AppKernel extends Kernel
 {
     public function registerBundles()
@@ -19,8 +17,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new ifz\towerofdimensionsBundle\ifztowerofdimensionsBundle(),
-            new Fp\OpenIdBundle\FpOpenIdBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
