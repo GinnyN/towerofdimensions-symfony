@@ -1,0 +1,7 @@
+parameters:
+#    ifz_towerof_dimensions.example.class: IFZ\TowerofDimensionsBundle\Example
+
+services:
+#    ifz_towerof_dimensions.example:
+#        class: %ifz_towerof_dimensions.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

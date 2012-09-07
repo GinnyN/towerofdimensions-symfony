@@ -1,0 +1,6 @@
+IFZTowerofDimensionsBundle_openid:
+    pattern:  /openid/{provider}/
+    defaults: { _controller: IFZTowerofDimensionsBundle:Login:init }
+IFZTowerofDimensionsBundle_homepage:
+    pattern:  /
+    defaults: { _controller: IFZTowerofDimensionsBundle:Default:index, name: "empty" }

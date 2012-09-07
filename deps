@@ -61,3 +61,11 @@
     git=http://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=origin/2.0
+    
+[FpOpenIdBundle]
+    git=git://github.com/formapro/FpOpenIdBundle.git
+    target=bundles/Fp/OpenIdBundle
+    version=origin/1.2
+
+[LightOpenId]
+    git=git://github.com/formapro/LightOpenID.git
