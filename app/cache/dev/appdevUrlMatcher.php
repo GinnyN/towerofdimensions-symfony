@@ -143,19 +143,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // ifz_towerofdimensions_default_index
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+?)$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'ifz\\towerofdimensionsBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'ifz_towerofdimensions_default_index'));
-        }
-
-        // ifz_towerofdimensions_login_init
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'ifz_towerofdimensions_login_init');
-            }
-            return array (  '_controller' => 'ifz\\towerofdimensionsBundle\\Controller\\loginController::initAction',  '_route' => 'ifz_towerofdimensions_login_init',);
-        }
-
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

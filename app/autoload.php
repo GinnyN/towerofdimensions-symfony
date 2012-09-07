@@ -3,11 +3,14 @@
 use Symfony\Component\ClassLoader\UniversalClassLoader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
+require_once __DIR__.'/../vendor/symfony/src/Symfony/Component/ClassLoader/MapClassLoader.php';
+
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
     'Symfony'          => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles'),
     'Sensio'           => __DIR__.'/../vendor/bundles',
     'JMS'              => __DIR__.'/../vendor/bundles',
+    'Fp'               => __DIR__.'/../vendor/bundles',
     'Doctrine\\Common' => __DIR__.'/../vendor/doctrine-common/lib',
     'Doctrine\\DBAL'   => __DIR__.'/../vendor/doctrine-dbal/lib',
     'Doctrine'         => __DIR__.'/../vendor/doctrine/lib',
@@ -39,3 +42,9 @@ AnnotationRegistry::registerLoader(function($class) use ($loader) {
 AnnotationRegistry::registerFile(__DIR__.'/../vendor/doctrine/lib/Doctrine/ORM/Mapping/Driver/DoctrineAnnotations.php');
 
 require __DIR__.'/../vendor/swiftmailer/lib/swift_required.php';
+
+$mapClassLoader = new \Symfony\Component\ClassLoader\MapClassLoader(array(
+    'LightOpenID' => __DIR__ . '/../vendor/LightOpenId/openid.php'
+));
+
+$mapClassLoader->register();

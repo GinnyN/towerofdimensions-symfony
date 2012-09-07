@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new ifz\towerofdimensionsBundle\ifztowerofdimensionsBundle(),
+            new Fp\OpenIdBundle\FpOpenIdBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

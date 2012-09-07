@@ -82,6 +82,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/app/Resources/SensioFrameworkExtraBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/vendor/bundles/Sensio/Bundle/FrameworkExtraBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/app/Resources/JMSSecurityExtraBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/vendor/bundles/JMS/SecurityExtraBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'ifztowerofdimensionsBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/app/Resources/ifztowerofdimensionsBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'ifztowerofdimensionsBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/src/ifz/towerofdimensionsBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FpOpenIdBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/app/Resources/FpOpenIdBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FpOpenIdBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/vendor/bundles/Fp/OpenIdBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeDemoBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/app/Resources/AcmeDemoBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeDemoBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/src/Acme/DemoBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'WebProfilerBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/app/Resources/WebProfilerBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'WebProfilerBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/vendor/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
         $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioDistributionBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/app/Resources/SensioDistributionBundle/views', '/\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioDistributionBundle', '/Users/xcontreras/Sites/towerofdimensions-symfony/vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/views', '/\\.[^.]+\\.twig$/'))), 'twig');
@@ -235,21 +236,26 @@ class appDevDebugProjectContainer extends Container
         $c = new \Doctrine\Common\Cache\ArrayCache();
         $c->setNamespace('sf2orm_default_2cf1ed19ef063baf5bcd04bc59776e04');
 
-        $d = new \Doctrine\ORM\Mapping\Driver\DriverChain();
-        $d->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver(new \Symfony\Bridge\Doctrine\Annotations\IndexedReader($this->get('annotation_reader')), array(0 => '/Users/xcontreras/Sites/towerofdimensions-symfony/src/ifz/towerofdimensionsBundle/Entity')), 'ifz\\towerofdimensionsBundle\\Entity');
+        $d = new \Symfony\Bridge\Doctrine\Mapping\Driver\XmlDriver(array(0 => '/Users/xcontreras/Sites/towerofdimensions-symfony/vendor/bundles/Fp/OpenIdBundle/Resources/config/doctrine'));
+        $d->setNamespacePrefixes(array('/Users/xcontreras/Sites/towerofdimensions-symfony/vendor/bundles/Fp/OpenIdBundle/Resources/config/doctrine' => 'Fp\\OpenIdBundle\\Entity'));
+        $d->setGlobalBasename('mapping');
 
-        $e = new \Doctrine\ORM\Configuration();
-        $e->setEntityNamespaces(array('ifztowerofdimensionsBundle' => 'ifz\\towerofdimensionsBundle\\Entity'));
-        $e->setMetadataCacheImpl($a);
-        $e->setQueryCacheImpl($b);
-        $e->setResultCacheImpl($c);
-        $e->setMetadataDriverImpl($d);
-        $e->setProxyDir('/Users/xcontreras/Sites/towerofdimensions-symfony/app/cache/dev/doctrine/orm/Proxies');
-        $e->setProxyNamespace('Proxies');
-        $e->setAutoGenerateProxyClasses(true);
-        $e->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $e = new \Doctrine\ORM\Mapping\Driver\DriverChain();
+        $e->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver(new \Symfony\Bridge\Doctrine\Annotations\IndexedReader($this->get('annotation_reader')), array(0 => '/Users/xcontreras/Sites/towerofdimensions-symfony/src/ifz/towerofdimensionsBundle/Entity')), 'ifz\\towerofdimensionsBundle\\Entity');
+        $e->addDriver($d, 'Fp\\OpenIdBundle\\Entity');
 
-        return $this->services['doctrine.orm.default_entity_manager'] = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $e);
+        $f = new \Doctrine\ORM\Configuration();
+        $f->setEntityNamespaces(array('ifztowerofdimensionsBundle' => 'ifz\\towerofdimensionsBundle\\Entity', 'FpOpenIdBundle' => 'Fp\\OpenIdBundle\\Entity'));
+        $f->setMetadataCacheImpl($a);
+        $f->setQueryCacheImpl($b);
+        $f->setResultCacheImpl($c);
+        $f->setMetadataDriverImpl($e);
+        $f->setProxyDir('/Users/xcontreras/Sites/towerofdimensions-symfony/app/cache/dev/doctrine/orm/Proxies');
+        $f->setProxyNamespace('Proxies');
+        $f->setAutoGenerateProxyClasses(true);
+        $f->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+
+        return $this->services['doctrine.orm.default_entity_manager'] = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $f);
     }
 
     /**
@@ -794,6 +800,50 @@ class appDevDebugProjectContainer extends Container
     protected function getForm_TypeGuesser_ValidatorService()
     {
         return $this->services['form.type_guesser.validator'] = new \Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser($this->get('validator.mapping.class_metadata_factory'));
+    }
+
+    /**
+     * Gets the 'fp_openid.relying_party.default' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Fp\OpenIdBundle\RelyingParty\RelyingPartyCollection A Fp\OpenIdBundle\RelyingParty\RelyingPartyCollection instance.
+     */
+    protected function getFpOpenid_RelyingParty_DefaultService()
+    {
+        $this->services['fp_openid.relying_party.default'] = $instance = new \Fp\OpenIdBundle\RelyingParty\RelyingPartyCollection();
+
+        $instance->append($this->get('fp_openid.relying_party.recovered_failure'));
+        $instance->append($this->get('fp_openid.relying_party.light_open_id'));
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'fp_openid.relying_party.light_open_id' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Fp\OpenIdBundle\Bridge\RelyingParty\LightOpenIdRelyingParty A Fp\OpenIdBundle\Bridge\RelyingParty\LightOpenIdRelyingParty instance.
+     */
+    protected function getFpOpenid_RelyingParty_LightOpenIdService()
+    {
+        return $this->services['fp_openid.relying_party.light_open_id'] = new \Fp\OpenIdBundle\Bridge\RelyingParty\LightOpenIdRelyingParty();
+    }
+
+    /**
+     * Gets the 'fp_openid.relying_party.recovered_failure' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Fp\OpenIdBundle\RelyingParty\RecoveredFailureRelyingParty A Fp\OpenIdBundle\RelyingParty\RecoveredFailureRelyingParty instance.
+     */
+    protected function getFpOpenid_RelyingParty_RecoveredFailureService()
+    {
+        return $this->services['fp_openid.relying_party.recovered_failure'] = new \Fp\OpenIdBundle\RelyingParty\RecoveredFailureRelyingParty();
     }
 
     /**
@@ -1933,7 +1983,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Access_DecisionManagerService()
     {
-        return $this->services['security.access.decision_manager'] = new \Symfony\Component\Security\Core\Authorization\AccessDecisionManager(array(0 => new \Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter(new \Symfony\Component\Security\Core\Role\RoleHierarchy(array('ROLE_ADMIN' => array(0 => 'ROLE_USER'), 'ROLE_SUPER_ADMIN' => array(0 => 'ROLE_USER', 1 => 'ROLE_ADMIN', 2 => 'ROLE_ALLOWED_TO_SWITCH')))), 1 => new \Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter($this->get('security.authentication.trust_resolver'))), 'affirmative', false, true);
+        return $this->services['security.access.decision_manager'] = new \Symfony\Component\Security\Core\Authorization\AccessDecisionManager(array(0 => new \Fp\OpenIdBundle\Security\Core\Authorization\Voter\OpenIdAuthenticatedVoter(), 1 => new \Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter(new \Symfony\Component\Security\Core\Role\RoleHierarchy(array('ROLE_ADMIN' => array(0 => 'ROLE_USER'), 'ROLE_SUPER_ADMIN' => array(0 => 'ROLE_USER', 1 => 'ROLE_ADMIN', 2 => 'ROLE_ALLOWED_TO_SWITCH')))), 2 => new \Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter($this->get('security.authentication.trust_resolver'))), 'affirmative', false, true);
     }
 
     /**
@@ -2126,6 +2176,7 @@ class appDevDebugProjectContainer extends Container
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
                 'JMSSecurityExtraBundle' => 'JMS\\SecurityExtraBundle\\JMSSecurityExtraBundle',
                 'ifztowerofdimensionsBundle' => 'ifz\\towerofdimensionsBundle\\ifztowerofdimensionsBundle',
+                'FpOpenIdBundle' => 'Fp\\OpenIdBundle\\FpOpenIdBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
@@ -2454,10 +2505,11 @@ class appDevDebugProjectContainer extends Container
                 7 => 'SensioFrameworkExtraBundle',
                 8 => 'JMSSecurityExtraBundle',
                 9 => 'ifztowerofdimensionsBundle',
-                10 => 'AcmeDemoBundle',
-                11 => 'WebProfilerBundle',
-                12 => 'SensioDistributionBundle',
-                13 => 'SensioGeneratorBundle',
+                10 => 'FpOpenIdBundle',
+                11 => 'AcmeDemoBundle',
+                12 => 'WebProfilerBundle',
+                13 => 'SensioDistributionBundle',
+                14 => 'SensioGeneratorBundle',
             ),
             'assetic.twig_extension.class' => 'Symfony\\Bundle\\AsseticBundle\\Twig\\AsseticExtension',
             'assetic.twig_formula_loader.class' => 'Assetic\\Extension\\Twig\\TwigFormulaLoader',
@@ -2503,6 +2555,13 @@ class appDevDebugProjectContainer extends Container
             'security.extra.controller_listener.class' => 'JMS\\SecurityExtraBundle\\Controller\\ControllerListener',
             'security.access.iddqd_voter.class' => 'JMS\\SecurityExtraBundle\\Security\\Authorization\\Voter\\IddqdVoter',
             'security.extra.secure_all_services' => false,
+            'security.authentication.provider.fp_openid.class' => 'Fp\\OpenIdBundle\\Security\\Core\\Authentication\\Provider\\OpenIdAuthenticationProvider',
+            'security.authentication.listener.fp_openid.class' => 'Fp\\OpenIdBundle\\Security\\Http\\Firewall\\OpenIdAuthenticationListener',
+            'security.access.fp_openid_authenticated_voter.class' => 'Fp\\OpenIdBundle\\Security\\Core\\Authorization\\Voter\\OpenIdAuthenticatedVoter',
+            'fp_openid.relying_party.light_open_id.class' => 'Fp\\OpenIdBundle\\Bridge\\RelyingParty\\LightOpenIdRelyingParty',
+            'fp_openid.relying_party.recovered_failure.class' => 'Fp\\OpenIdBundle\\RelyingParty\\RecoveredFailureRelyingParty',
+            'fp_openid.relying_party.collection.class' => 'Fp\\OpenIdBundle\\RelyingParty\\RelyingPartyCollection',
+            'fp_openid.template.engine' => 'twig',
             'web_profiler.debug_toolbar.class' => 'Symfony\\Bundle\\WebProfilerBundle\\EventListener\\WebDebugToolbarListener',
             'web_profiler.debug_toolbar.intercept_redirects' => false,
             'web_profiler.debug_toolbar.mode' => 2,

@@ -1,4 +1,6 @@
-# app/config/routing.yml
-mainStart:
-	pattern: /
-	defaults: { _controller: ifztowerofdimensionsBundle:login:Init }
+tod_login:
+    pattern:  /{steam}/ 
+    defaults:  { _controller: ifztowerofdimensionsBundle:Login:init, steam: 'empty' }
+tod_mainStart:
+    pattern:  /
+    defaults:  { _controller: ifztowerofdimensionsBundle:Login:init, steam: 'empty' }
