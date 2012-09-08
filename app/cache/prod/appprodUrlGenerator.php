@@ -16,7 +16,6 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        'fp_openid_security_login' => true,
        'fp_openid_security_check' => true,
        'fp_openid_security_logout' => true,
-       'IFZTowerofDimensionsBundle_openid' => true,
        'IFZTowerofDimensionsBundle_homepage' => true,
     );
 
@@ -54,11 +53,6 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
     private function getfp_openid_security_logoutRouteInfo()
     {
         return array(array (), array (  '_controller' => 'Fp\\OpenIdBundle\\Controller\\SecurityController::logoutAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/logout',  ),));
-    }
-
-    private function getIFZTowerofDimensionsBundle_openidRouteInfo()
-    {
-        return array(array (  0 => 'provider',), array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\LoginController::initAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/',  ),  1 =>   array (    0 => 'variable',    1 => '/',    2 => '[^/]+?',    3 => 'provider',  ),  2 =>   array (    0 => 'text',    1 => '/openid',  ),));
     }
 
     private function getIFZTowerofDimensionsBundle_homepageRouteInfo()

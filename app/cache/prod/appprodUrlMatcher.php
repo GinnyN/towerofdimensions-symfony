@@ -40,14 +40,6 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return array (  '_controller' => 'Fp\\OpenIdBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fp_openid_security_logout',);
         }
 
-        // IFZTowerofDimensionsBundle_openid
-        if (0 === strpos($pathinfo, '/openid') && preg_match('#^/openid/(?P<provider>[^/]+?)/?$#s', $pathinfo, $matches)) {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'IFZTowerofDimensionsBundle_openid');
-            }
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\LoginController::initAction',)), array('_route' => 'IFZTowerofDimensionsBundle_openid'));
-        }
-
         // IFZTowerofDimensionsBundle_homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
