@@ -38,6 +38,7 @@
     <parameter key="mailer_password"></parameter>
     <parameter key="locale">en</parameter>
     <parameter key="secret">a0e8b8fbff58e81dd9f592c75802237f5267fe3f</parameter>
+    <parameter key="steam_hash">1BAC09271DF89CC273F6959BD63F1E6B</parameter>
     <parameter key="router_listener.class">Symfony\Bundle\FrameworkBundle\EventListener\RouterListener</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
     <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
@@ -1211,7 +1212,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>504a6486418a0</argument>
+            <argument>504bc56ca80f9</argument>
           </service>
         </argument>
         <argument type="service">
@@ -1440,7 +1441,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>504a6486418a0</argument>
+            <argument>504bc56ca80f9</argument>
             <argument type="service" id="monolog.logger.security"/>
           </service>
         </argument>
