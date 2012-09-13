@@ -40,12 +40,20 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return array (  '_controller' => 'Fp\\OpenIdBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fp_openid_security_logout',);
         }
 
+        // IFZTowerofDimensionsBundle_mercenaries
+        if (rtrim($pathinfo, '/') === '/mercenaries') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'IFZTowerofDimensionsBundle_mercenaries');
+            }
+            return array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\DefaultController::mercenariesAction',  '_route' => 'IFZTowerofDimensionsBundle_mercenaries',);
+        }
+
         // IFZTowerofDimensionsBundle_homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
                 return $this->redirect($pathinfo.'/', 'IFZTowerofDimensionsBundle_homepage');
             }
-            return array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\DefaultController::indexAction',  'name' => 'empty',  '_route' => 'IFZTowerofDimensionsBundle_homepage',);
+            return array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'IFZTowerofDimensionsBundle_homepage',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

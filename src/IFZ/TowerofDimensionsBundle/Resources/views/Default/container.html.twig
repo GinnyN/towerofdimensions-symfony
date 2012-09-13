@@ -2,10 +2,60 @@
 <html lang="en">
 	<head>
 		<title>Tower of Dimensions</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+		<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0 maximum-scale=1.0">
+
+		<!-- IPhone Specific Meta -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+
+		<!-- CSSs -->
+		<link href='http://necolas.github.com/normalize.css/2.0.1/normalize.css' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Podkova' rel='stylesheet' type='text/css'>
+		<link href='{{ asset('css/style.css') }}' rel='stylesheet' type='text/css'>
+
+		<!-- Javascripts -->
+		<script src="{{ asset("js/jquery.js") }}"></script>
+		<script src="{{ asset("js/jquery-ui-animate.js") }}"></script>
+		<script src="{{ asset('js/modernizr-transitions.js') }}"></script>
+		<script src="{{ asset('js/navigation.js') }}"></script>
 	</head>
 	<body>
-		{{ nick }}
-		<img src={{ avatar }} />
+		<header id="enter">
+			<h1> Tower of Dimensions </h1>
+			
+			<div id="personal-information">
+				<figure id="user-avatar">
+					<img src={{ avatar }} />
+				</figure>
+				<div id="avatar">
+					<p>{{ nick }}<br/>
+					$: </p>
+				</div>
+				<div id="logout">
+					<a href="/logout"> Logout </a>
+				</div>
+			</div>
+		</header>
+		<div id="overflow">
+			<div id="container">
+				<nav>
+					<ul>
+						<li> Dashboard </li>
+						<li id="mercenaries"> Mercenaries </li>
+						<li> Missions </li>
+						<li> Inn </li>
+						<li> Store </li>
+						<li> School </li>
+						<li> Blacksmith </li>
+					</ul>
+				</nav>
+				<div id="section-1">
+					
+				</div>
+			</div>
+		</div>
+		<footer>
+			<p><a href="http://steampowered.com">Powered by Steam</a></p>
+		</footer>
 	</body>
 </html>

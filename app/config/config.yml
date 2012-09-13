@@ -20,6 +20,8 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    globals:
+        steam_hash: %steam_hash%
 
 # Assetic Configuration
 assetic:

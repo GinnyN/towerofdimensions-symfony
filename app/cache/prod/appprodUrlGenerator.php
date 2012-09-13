@@ -16,6 +16,7 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        'fp_openid_security_login' => true,
        'fp_openid_security_check' => true,
        'fp_openid_security_logout' => true,
+       'IFZTowerofDimensionsBundle_mercenaries' => true,
        'IFZTowerofDimensionsBundle_homepage' => true,
     );
 
@@ -55,8 +56,13 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
         return array(array (), array (  '_controller' => 'Fp\\OpenIdBundle\\Controller\\SecurityController::logoutAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/logout',  ),));
     }
 
+    private function getIFZTowerofDimensionsBundle_mercenariesRouteInfo()
+    {
+        return array(array (), array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\DefaultController::mercenariesAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mercenaries/',  ),));
+    }
+
     private function getIFZTowerofDimensionsBundle_homepageRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\DefaultController::indexAction',  'name' => 'empty',), array (), array (  0 =>   array (    0 => 'text',    1 => '/',  ),));
+        return array(array (), array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\DefaultController::indexAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/',  ),));
     }
 }

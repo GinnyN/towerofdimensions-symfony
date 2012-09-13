@@ -74,7 +74,7 @@ class appProdProjectContainer extends Container
     {
         $a = new \Doctrine\Common\EventManager();
         $a->addEventSubscriber(new \Doctrine\DBAL\Event\Listeners\MysqlSessionInit('UTF8'));
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'towerofdimensions', 'host' => 'localhost', 'port' => '', 'user' => 'root', 'password' => 'root', 'driver' => 'pdo_mysql', 'logging' => false, 'driverOptions' => array()), new \Doctrine\DBAL\Configuration(), $a, array());
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('dbname' => 'towerofdimensions', 'host' => 'localhost', 'port' => '3306', 'user' => 'root', 'password' => 'root', 'driver' => 'pdo_mysql', 'logging' => false, 'driverOptions' => array()), new \Doctrine\DBAL\Configuration(), $a, array());
     }
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
@@ -88,9 +88,10 @@ class appProdProjectContainer extends Container
         $d->setNamespacePrefixes(array('/Users/xcontreras/Sites/towerofdimensions-symfony/vendor/bundles/Fp/OpenIdBundle/Resources/config/doctrine' => 'Fp\\OpenIdBundle\\Entity'));
         $d->setGlobalBasename('mapping');
         $e = new \Doctrine\ORM\Mapping\Driver\DriverChain();
+        $e->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver(new \Symfony\Bridge\Doctrine\Annotations\IndexedReader($this->get('annotation_reader')), array(0 => '/Users/xcontreras/Sites/towerofdimensions-symfony/src/IFZ/TowerofDimensionsBundle/Entity')), 'IFZ\\TowerofDimensionsBundle\\Entity');
         $e->addDriver($d, 'Fp\\OpenIdBundle\\Entity');
         $f = new \Doctrine\ORM\Configuration();
-        $f->setEntityNamespaces(array('FpOpenIdBundle' => 'Fp\\OpenIdBundle\\Entity'));
+        $f->setEntityNamespaces(array('IFZTowerofDimensionsBundle' => 'IFZ\\TowerofDimensionsBundle\\Entity', 'FpOpenIdBundle' => 'Fp\\OpenIdBundle\\Entity'));
         $f->setMetadataCacheImpl($a);
         $f->setQueryCacheImpl($b);
         $f->setResultCacheImpl($c);
@@ -413,7 +414,7 @@ class appProdProjectContainer extends Container
         $e->addHandler($this->get('security.logout.handler.session'));
         $f = new \Fp\OpenIdBundle\Security\Http\Firewall\OpenIdAuthenticationListener($a, $this->get('security.authentication.manager'), $this->get('security.authentication.session_strategy'), $d, 'main', array('check_path' => '/login_check_openid', 'login_path' => '/login_openid', 'use_forward' => false, 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false, 'failure_path' => NULL, 'failure_forward' => false, 'create_user_if_not_exists' => false, 'required_attributes' => array(), 'optional_attributes' => array()), NULL, NULL, $b, $c);
         $f->setRelyingParty($this->get('fp_openid.relying_party.default'));
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('security.user.provider.concrete.in_memory')), 'main', $b, $c), 2 => $e, 3 => $f, 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '504bc26e4f499', $b), 5 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $d, new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), $d, '/login_openid', false), NULL, NULL, $b));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => $this->get('security.channel_listener'), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($a, array(0 => $this->get('security.user.provider.concrete.in_memory')), 'main', $b, $c), 2 => $e, 3 => $f, 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($a, '50524b403ebcc', $b), 5 => $this->get('security.access_listener')), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($a, $this->get('security.authentication.trust_resolver'), $d, new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), $d, '/login_openid', false), NULL, NULL, $b));
     }
     protected function getSecurity_Firewall_Map_Context_SecuredAreaService()
     {
@@ -584,6 +585,7 @@ class appProdProjectContainer extends Container
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\YamlExtension());
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension(array(0 => 'form_div_layout.html.twig')));
         $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\AsseticExtension($this->get('assetic.asset_factory'), true, array()));
+        $instance->addGlobal('steam_hash', '1BAC09271DF89CC273F6959BD63F1E6B');
         return $instance;
     }
     protected function getTwig_ExceptionListenerService()
@@ -639,7 +641,7 @@ class appProdProjectContainer extends Container
     }
     protected function getSecurity_Authentication_ManagerService()
     {
-        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Fp\OpenIdBundle\Security\Core\Authentication\Provider\OpenIdAuthenticationProvider('main'), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('504bc26e4f499'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.in_memory'), new \Symfony\Component\Security\Core\User\UserChecker(), 'secured_area', $this->get('security.encoder_factory'), true)));
+        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Fp\OpenIdBundle\Security\Core\Authentication\Provider\OpenIdAuthenticationProvider('main'), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('50524b403ebcc'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('security.user.provider.concrete.in_memory'), new \Symfony\Component\Security\Core\User\UserChecker(), 'secured_area', $this->get('security.encoder_factory'), true)));
     }
     protected function getSecurity_Authentication_SessionStrategyService()
     {
@@ -729,7 +731,7 @@ class appProdProjectContainer extends Container
             'kernel.container_class' => 'appProdProjectContainer',
             'database_driver' => 'pdo_mysql',
             'database_host' => 'localhost',
-            'database_port' => '',
+            'database_port' => '3306',
             'database_name' => 'towerofdimensions',
             'database_user' => 'root',
             'database_password' => 'root',

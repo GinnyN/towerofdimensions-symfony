@@ -20,6 +20,12 @@ security:
             pattern: ^/
 
             fp_openid: ~
+                #failure_path: /finish_login_openid
+                #provider: openid_user_manager
+                #required_attributes:
+                 #   -                                     contact/email
+                  #  -                                     namePerson/first
+                   # -                                     namePerson/last
 
             logout:       true
             anonymous:    true
@@ -42,6 +48,12 @@ security:
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
+   # providers:
+    #    openid_user_manager:
+     #       id:                                           fp_openid.user_manager
+
+    access_control:
+        - { path: ^/finish_login_openid$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
     access_control:
         - { path: ^/login_openid$, role: IS_AUTHENTICATED_ANONYMOUSLY }
