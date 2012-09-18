@@ -1,6 +1,6 @@
 IFZTowerofDimensionsBundle_mercenaries:
     pattern:  /mercenaries/
-    defaults: { _controller: IFZTowerofDimensionsBundle:Default:mercenaries }
+    defaults: { _controller: IFZTowerofDimensionsBundle:Mercenaries:mercenaries }
 IFZTowerofDimensionsBundle_homepage:
     pattern:  /
     defaults: { _controller: IFZTowerofDimensionsBundle:Default:index }

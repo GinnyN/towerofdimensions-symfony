@@ -9,12 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 
 
 class DefaultController extends Controller
-{
-    public function mercenariesAction()
-    {
-        return $this->render('IFZTowerofDimensionsBundle:Default:mercenaries-index.html.twig');
-    }
-    
+{   
     public function indexAction(Request $request)
     {
     	$token = $this->container->get('security.context')->getToken()->getUser();

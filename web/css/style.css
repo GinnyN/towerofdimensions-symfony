@@ -37,13 +37,13 @@ a
 }
 div#container
 {
-	margin: 4em 0 0 0;
+	margin: 2em 0 0 0;
 	width: 50em;
 	transition: margin-left 1s ease-out;
 }
 div#overflow
 {
-	overflow: hidden;
+	overflow-x: hidden;
 	width: 19.8em;
 }
 div#personal-information
@@ -104,10 +104,14 @@ footer p a
 h1
 {
 	background: rgba(216,168,144,1);
+	display: inline-block;
+	float: left;
 	font-family: 'Adamina', serif;
 	font-size: 1.5em;
+	line-height: 2em;
 	margin: 0em;
 	text-align: center;
+	height:3em;
 	z-index: 2;
 }
 h2
