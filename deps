@@ -69,3 +69,11 @@
 
 [LightOpenId]
     git=git://github.com/formapro/LightOpenID.git
+
+[doctrine-migrations]
+    git=http://github.com/doctrine/migrations.git
+
+[DoctrineMigrationsBundle]
+    git=http://github.com/doctrine/DoctrineMigrationsBundle.git
+    target=/bundles/Doctrine/Bundle/DoctrineMigrationsBundle
+    version=origin/2.0
