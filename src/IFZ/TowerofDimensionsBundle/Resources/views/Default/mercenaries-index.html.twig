@@ -1,8 +1,8 @@
 <h2><span class="back-menu"><-</span> Mercenaries </h2>
 {% for merc in mercenaries %}
-<article class="mercenario">
+<article class="mercenario" id={{ merc.id }}>
 	<figure>
-
+		<img src="{{ asset(merc.busto) }}"/>
 	</figure>
 	<ul>
 		<li>{{ merc.name }}</li>

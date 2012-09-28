@@ -94,6 +94,9 @@ class __TwigTemplate_46dbb268d4126d44a1a6d9b5f34c00f3 extends Twig_Template
 \t\t\t\t<div id=\"section-1\">
 \t\t\t\t\t
 \t\t\t\t</div>
+\t\t\t\t<div id=\"section-2\">
+\t\t\t\t\t
+\t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
 \t\t<footer>

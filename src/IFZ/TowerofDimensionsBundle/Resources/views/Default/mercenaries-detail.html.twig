@@ -1,0 +1,22 @@
+<h2 class="mercenario"><span class="back-menu-first"><-</span> {{ name }} </h2>
+<article class="merc-detail" id={{ id }}>
+	<figure>
+		<img src="{{ asset(completo) }}"/>
+	</figure>
+	<ul>
+		<li> HP: {{ hp }}</li>
+		<li> Level: {{ level }}/ EXP: {{ exp }}</li>
+	</ul>
+	<ul class="stats">
+		<li>AGI: {{ agilidad }}</li>
+		<li>DEX: {{ destreza }}</li>
+		<li>CON: {{ constitucion }}</li>
+		<li>STR: {{ fuerza }}</li>
+	</ul>
+	<ul class="stats">
+		<li>POW: {{ poder }}</li>
+		<li>INT: {{ inteligencia }}</li>
+		<li>WIS: {{ sabiduria }}</li>
+		<li>CHA: {{ carisma }}</li>
+	</ul>
+</article>

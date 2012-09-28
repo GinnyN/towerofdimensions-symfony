@@ -516,10 +516,34 @@ class IFZTowerofDimensionsBundleEntityMercenaryProxy extends \IFZ\TowerofDimensi
         return parent::readFromJson($id);
     }
 
+    public function setUrlBusto($urlBusto)
+    {
+        $this->__load();
+        return parent::setUrlBusto($urlBusto);
+    }
+
+    public function getUrlBusto()
+    {
+        $this->__load();
+        return parent::getUrlBusto();
+    }
+
+    public function setUrlCompleto($urlCompleto)
+    {
+        $this->__load();
+        return parent::setUrlCompleto($urlCompleto);
+    }
+
+    public function getUrlCompleto()
+    {
+        $this->__load();
+        return parent::getUrlCompleto();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'player', 'name', 'idBase', 'nivel', 'exp', 'agilidad', 'destreza', 'constitucion', 'fuerza', 'inteligencia', 'sabiduria', 'carisma', 'poder', 'marcial', 'stealth', 'magia', 'tecnologia', 'crecimientoAgilidad', 'crecimientoDestreza', 'crecimientoConstitucion', 'crecimientoFuerza', 'crecimientoInteligencia', 'crecimientoSabiduria', 'crecimientoCarisma', 'crecimientoPoder', 'crecimientoMarcial', 'crecimientoStealth', 'crecimientoMagia', 'crecimientoTecnologia', 'hpCalculo', 'item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'hpMax', 'hpActual', 'misionActual');
+        return array('__isInitialized__', 'id', 'player', 'name', 'idBase', 'nivel', 'exp', 'agilidad', 'destreza', 'constitucion', 'fuerza', 'inteligencia', 'sabiduria', 'carisma', 'poder', 'marcial', 'stealth', 'magia', 'tecnologia', 'crecimientoAgilidad', 'crecimientoDestreza', 'crecimientoConstitucion', 'crecimientoFuerza', 'crecimientoInteligencia', 'crecimientoSabiduria', 'crecimientoCarisma', 'crecimientoPoder', 'crecimientoMarcial', 'crecimientoStealth', 'crecimientoMagia', 'crecimientoTecnologia', 'hpCalculo', 'item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'hpMax', 'hpActual', 'misionActual', 'urlBusto', 'urlCompleto');
     }
 
     public function __clone()

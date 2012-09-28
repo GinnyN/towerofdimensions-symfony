@@ -214,6 +214,16 @@ class Mercenary
     protected $misionActual;
 
     /**
+     * @ORM\Column(type="string", length= 200)
+     */
+    protected $urlBusto;
+
+    /**
+     * @ORM\Column(type="string", length= 200)
+     */
+    protected $urlCompleto;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -1053,5 +1063,48 @@ class Mercenary
         $this->hpCalculo = $data->character[$id]->hpCalculo;
 
         $this->misionActual = 0;   
+
+        $this->urlBusto = $data->character[$id]->imgBusto;
+        $this->urlCompleto = $data->character[$id]->imgCompleto;
+    }
+
+    /**
+     * Set urlBusto
+     *
+     * @param string $urlBusto
+     */
+    public function setUrlBusto($urlBusto)
+    {
+        $this->urlBusto = $urlBusto;
+    }
+
+    /**
+     * Get urlBusto
+     *
+     * @return string 
+     */
+    public function getUrlBusto()
+    {
+        return $this->urlBusto;
+    }
+
+    /**
+     * Set urlCompleto
+     *
+     * @param string $urlCompleto
+     */
+    public function setUrlCompleto($urlCompleto)
+    {
+        $this->urlCompleto = $urlCompleto;
+    }
+
+    /**
+     * Get urlCompleto
+     *
+     * @return string 
+     */
+    public function getUrlCompleto()
+    {
+        return $this->urlCompleto;
     }
 }

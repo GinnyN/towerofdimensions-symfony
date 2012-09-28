@@ -23,9 +23,14 @@ class __TwigTemplate_5cfe4a94f54c45494b5c6840cb68183c extends Twig_Template
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "mercenaries"));
         foreach ($context['_seq'] as $context["_key"] => $context["merc"]) {
             // line 3
-            echo "<article class=\"mercenario\">
+            echo "<article class=\"mercenario\" id=";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "merc"), "id"), "html", null, true);
+            echo ">
 \t<figure>
-
+\t\t<img src=\"";
+            // line 5
+            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl($this->getAttribute($this->getContext($context, "merc"), "busto")), "html", null, true);
+            echo "\"/>
 \t</figure>
 \t<ul>
 \t\t<li>";
@@ -63,6 +68,6 @@ class __TwigTemplate_5cfe4a94f54c45494b5c6840cb68183c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  39 => 10,  35 => 9,  31 => 8,  24 => 3,  20 => 2,  17 => 1,);
+        return array (  44 => 10,  40 => 9,  36 => 8,  30 => 5,  24 => 3,  20 => 2,  17 => 1,);
     }
 }

@@ -18,7 +18,7 @@ class Mercenary
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Player", inversedBy="mercenaries")
+     * @ORM\ManyToOne(targetEntity="Player", inversedBy="mercenaries", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
      */
     protected $player;
@@ -212,6 +212,16 @@ class Mercenary
      * @ORM\Column(type="integer")
      */
     protected $misionActual;
+
+    /**
+     * @ORM\Column(type="string", length= 200)
+     */
+    protected $urlBusto;
+
+    /**
+     * @ORM\Column(type="string", length= 200)
+     */
+    protected $urlCompleto;
 
     /**
      * Get id
@@ -1053,5 +1063,8 @@ class Mercenary
         $this->hpCalculo = $data->character[$id]->hpCalculo;
 
         $this->misionActual = 0;   
+
+        $this->urlBusto = $data->character[$id]->urlBusto;
+        $this->urlCompleto = $data->character[$id]->urlCompleto;
     }
 }

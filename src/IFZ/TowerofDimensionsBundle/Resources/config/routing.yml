@@ -1,3 +1,6 @@
+IFZTowerofDimensionsBundle_mercenariesDetail:
+    pattern:  /mercenaries/detail/{id}/
+    defaults: { _controller: IFZTowerofDimensionsBundle:Mercenaries:mercenariesDetail, id: "empty" }
 IFZTowerofDimensionsBundle_mercenaries:
     pattern:  /mercenaries/
     defaults: { _controller: IFZTowerofDimensionsBundle:Mercenaries:mercenaries }

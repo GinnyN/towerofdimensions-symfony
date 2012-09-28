@@ -158,6 +158,14 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Fp\\OpenIdBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fp_openid_security_logout',);
         }
 
+        // IFZTowerofDimensionsBundle_mercenariesDetail
+        if (0 === strpos($pathinfo, '/mercenaries/detail') && preg_match('#^/mercenaries/detail/(?P<id>[^/]+?)/?$#s', $pathinfo, $matches)) {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'IFZTowerofDimensionsBundle_mercenariesDetail');
+            }
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\MercenariesController::mercenariesDetailAction',  'id' => 'empty',)), array('_route' => 'IFZTowerofDimensionsBundle_mercenariesDetail'));
+        }
+
         // IFZTowerofDimensionsBundle_mercenaries
         if (rtrim($pathinfo, '/') === '/mercenaries') {
             if (substr($pathinfo, -1) !== '/') {

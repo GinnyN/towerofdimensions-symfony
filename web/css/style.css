@@ -5,7 +5,7 @@
 	margin: 0;
 	padding: 0;
 }
-article.mercenario
+article.mercenario, h2.mercenario
 {
 	background: rgba(240,192,168,1);
 	border-radius: 0 25px 0 25px;
@@ -16,14 +16,49 @@ article.mercenario figure
 {
 	display: inline-block;
 	float: left;
-	width: 4em;
-	height: 4em;
+	width: 3em;
+	height: 3em;
+}
+article.mercenario figure img
+{
+	width: 100%;
 }
 article.mercenario ul
 {
 	list-style: none;
 	margin: 0;
 	overflow: hidden;
+}
+
+article.merc-detail figure
+{
+	display: inline-block;
+	float: right;
+	position: relative;
+	width: 10em;
+}
+article.merc-detail figure img
+{
+	width: 100%;
+}
+article.merc-detail ul
+{
+	list-style: none;
+	margin: 0;
+	margin-top: 1em;
+	overflow: hidden;
+}
+article.merc-detail ul.stats
+{
+	display: inline-block;
+}
+article.merc-detail ul.stats:nth-child(1)
+{
+	float: left;
+}
+article.merc-detail ul.stats:nth-child(2)
+{
+	float: right;
 }
 body
 {
@@ -38,13 +73,15 @@ a
 div#container
 {
 	margin: 2em 0 0 0;
-	width: 50em;
-	transition: margin-left 1s ease-out;
+	width: 70em;
+	overflow-y: visible;
 }
 div#overflow
 {
 	overflow-x: hidden;
+	overflow-y: visible;
 	width: 19.8em;
+	z-index: 500000000;
 }
 div#personal-information
 {
@@ -86,6 +123,11 @@ div#section-1 h2
 	box-shadow:  0.1em 0.1em 0.3em rgba(216,168,144,1);
 	border-radius: 0 0 20px 0;
 }
+div#section-2
+{
+	overflow-x: hidden; 
+}
+
 figure#user-avatar
 {
 	display: inline-block;
@@ -141,7 +183,7 @@ div#init h1
 {
 	margin: 1em;
 }
-nav, div#section-1
+nav, div#section-1, div#section-2
 {
 	display: inline-block;
 	float: left;
