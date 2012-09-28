@@ -5,7 +5,7 @@ namespace IFZ\TowerofDimensionsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="IFZ\TowerOfDimensionsBundle\Repository\SteamRepository")
  * @ORM\Table(name="steam")
  */
 class Steam 
@@ -18,13 +18,13 @@ class Steam
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Player", mappedBy="player")
+     * @ORM\OneToOne(targetEntity="Player", mappedBy="player", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
      */
     protected $player;
 
     /**
-    * @ORM\Column(type="integer")
+    * @ORM\Column(type="string", length=500)
     */
     protected $steamId;
 

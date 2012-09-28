@@ -45,7 +45,7 @@ class appprodUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             if (substr($pathinfo, -1) !== '/') {
                 return $this->redirect($pathinfo.'/', 'IFZTowerofDimensionsBundle_mercenaries');
             }
-            return array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\DefaultController::mercenariesAction',  '_route' => 'IFZTowerofDimensionsBundle_mercenaries',);
+            return array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\MercenariesController::mercenariesAction',  '_route' => 'IFZTowerofDimensionsBundle_mercenaries',);
         }
 
         // IFZTowerofDimensionsBundle_homepage

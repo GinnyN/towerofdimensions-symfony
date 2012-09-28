@@ -58,7 +58,7 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
 
     private function getIFZTowerofDimensionsBundle_mercenariesRouteInfo()
     {
-        return array(array (), array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\DefaultController::mercenariesAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mercenaries/',  ),));
+        return array(array (), array (  '_controller' => 'IFZ\\TowerofDimensionsBundle\\Controller\\MercenariesController::mercenariesAction',), array (), array (  0 =>   array (    0 => 'text',    1 => '/mercenaries/',  ),));
     }
 
     private function getIFZTowerofDimensionsBundle_homepageRouteInfo()

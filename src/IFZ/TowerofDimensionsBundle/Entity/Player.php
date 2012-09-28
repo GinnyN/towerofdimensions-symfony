@@ -33,7 +33,7 @@ class Player
     protected $money;
 
     /**
-     * @ORM\OneToMany(targetEntity="Mercenary", mappedBy="player")
+     * @ORM\OneToMany(targetEntity="Mercenary", mappedBy="player", cascade={"persist", "remove"})
      */
     protected $mercenaries;
 
@@ -100,6 +100,7 @@ class Player
     public function addMercenary(\IFZ\TowerofDimensionsBundle\Entity\Mercenary $mercenaries)
     {
         $this->mercenaries[] = $mercenaries;
+        $mercenaries->setPlayer($this);
     }
 
     /**

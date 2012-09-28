@@ -1,11 +1,13 @@
 <h2><span class="back-menu"><-</span> Mercenaries </h2>
+{% for merc in mercenaries %}
 <article class="mercenario">
 	<figure>
 
 	</figure>
 	<ul>
-		<li>Ginny</li>
-		<li> HP: </li>
-		<li> Level: / EXP: </li>
+		<li>{{ merc.name }}</li>
+		<li> HP: {{ merc.hp }}</li>
+		<li> Level: {{ merc.level }}/ EXP: {{ merc.exp }}</li>
 	</ul>
 </article>
+{% endfor %}

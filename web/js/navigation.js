@@ -15,11 +15,11 @@ function mercenaries()
 	
 	$.ajax({
 		type : 'GET',
-		url : '/mercenaries/',
+		url : '/app_dev.php/mercenaries/',
 		dataType: 'html',
 		success: function(result){
-			$("#section-1").html(result);
-			$(".back-menu").on("click", back);
+				$("#section-1").html(result);
+				$(".back-menu").on("click", back);
 		}
 	});
 }

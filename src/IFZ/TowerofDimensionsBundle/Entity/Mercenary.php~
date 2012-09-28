@@ -5,7 +5,7 @@ namespace IFZ\TowerofDimensionsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="IFZ\TowerOfDimensionsBundle\Repository\MercenaryRepository")
  * @ORM\Table(name="mercenary")
  */
 class Mercenary
@@ -1001,5 +1001,57 @@ class Mercenary
     public function getPlayer()
     {
         return $this->player;
+    }
+
+    public function readFromJson($id)
+    {
+        $data = file_get_contents(__DIR__."/../json/mercenarios.json");      
+        str_replace("/n","",$data); 
+        $data = json_decode($data);
+
+        $this->idBase = $data->character[$id]->idBase; 
+        $this->name = $data->character[$id]->nombre;    
+        $this->nivel = $data->character[$id]->nivel;
+        $this->exp = $data->character[$id]->exp;
+        
+        $this->agilidad = $data->character[$id]->agilidad;
+        $this->destreza = $data->character[$id]->destreza;
+        $this->constitucion = $data->character[$id]->constitucion;
+        $this->fuerza = $data->character[$id]->fuerza;
+        $this->inteligencia = $data->character[$id]->inteligencia;
+        $this->sabiduria = $data->character[$id]->sabiduria;
+        $this->carisma = $data->character[$id]->carisma;
+        $this->poder = $data->character[$id]->poder;
+        $this->marcial = $data->character[$id]->marcial; 
+        $this->stealth = $data->character[$id]->stealth;
+        $this->magia = $data->character[$id]->magia;
+        $this->tecnologia = $data->character[$id]->tecnologia;
+
+        $this->crecimientoAgilidad = $data->character[$id]->crecimientoAgilidad;
+        $this->crecimientoDestreza = $data->character[$id]->crecimientoDestreza;
+        $this->crecimientoConstitucion = $data->character[$id]->crecimientoConstitucion;
+        $this->crecimientoFuerza = $data->character[$id]->crecimientoFuerza;
+        $this->crecimientoInteligencia = $data->character[$id]->crecimientoInteligencia;
+        $this->crecimientoSabiduria = $data->character[$id]->crecimientoSabiduria;
+        $this->crecimientoCarisma = $data->character[$id]->crecimientoCarisma;
+        $this->crecimientoPoder = $data->character[$id]->crecimientoPoder;
+        $this->crecimientoMarcial = $data->character[$id]->crecimientoMarcial;
+        $this->crecimientoStealth = $data->character[$id]->crecimientoStealth;
+        $this->crecimientoMagia = $data->character[$id]->crecimientoMagia;
+        $this->crecimientoTecnologia = $data->character[$id]->crecimientoTecnologia;
+       
+
+        $this->item1 = $data->character[$id]->item1;
+        $this->item2 = $data->character[$id]->item2;
+        $this->item3 = $data->character[$id]->item3;
+        $this->item4 = $data->character[$id]->item4;
+        $this->item5 = $data->character[$id]->item5;
+        $this->item6 = $data->character[$id]->item6;
+
+        $this->hpMax = $data->character[$id]->hpMax;
+        $this->hpActual = $data->character[$id]->hpActual;
+        $this->hpCalculo = $data->character[$id]->hpCalculo;
+
+        $this->misionActual = 0;   
     }
 }

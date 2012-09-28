@@ -2,10 +2,15 @@
 
 namespace IFZ\TowerofDimensionsBundle\Controller;
 
+use IFZ\TowerofDimensionsBundle\Entity\Steam;
+use IFZ\TowerofDimensionsBundle\Entity\Player;
+use IFZ\TowerofDimensionsBundle\Entity\Mercenary;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
 class DefaultController extends Controller
@@ -21,13 +26,59 @@ class DefaultController extends Controller
 
         if($info["nick"] != 0)
             return $this->render('IFZTowerofDimensionsBundle:Default:index.html.twig');
-        else
+        else{
+
+            $steam = $this->getDoctrine()->getRepository('IFZTowerofDimensionsBundle:Steam')->findBySteamId($info["steamId"]);
+
+            if(!$steam)
+            {
+                $steam = new Steam();
+                $steam->setSteamId($info["steamId"]);
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($steam);
+                $em->flush();
+
+                $steam->setPlayer($this->newPlayer());
+                $em->persist($steam);
+                $em->flush();
+            }
+
+            $session = $this->get("session");
+            $session->start();
+            $session->set('player', $info["steamId"]);
+
+            $info = array_merge($info, array("coins" => $steam->getPlayer()->getCoins()));
+
             return $this->render('IFZTowerofDimensionsBundle:Default:container.html.twig',
                     $info
                 );
+        }
     }
 
-    public function login($token, $request)
+    private function newPlayer()
+    {
+        $data = file_get_contents(__DIR__."/../json/newUser.json");      
+        str_replace("/n","",$data); 
+        $data = json_decode($data);
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $player = new Player();
+
+        $player->setCoins($data->user->dinero);
+        $player->setMoney(20);
+
+        foreach($data->user->mercenarios as $mercenario)
+        {
+            $new = new Mercenary();
+            $new->readFromJson($mercenario);
+            $player->addMercenary($new);
+        }
+
+        return $player;
+    }
+
+    private function login($token, $request)
     {
        // var_dump(strpos($token, "steamcommunity.com/openid/id/"));
         if (strpos($token, "steamcommunity.com/openid/id/"))
@@ -47,6 +98,7 @@ class DefaultController extends Controller
             
             $json = json_decode($response);
             $info = array(
+                    'steamId' => $token,
                     'nick' => $json->response->players[0]->personaname,
                     'avatar' => $json->response->players[0]->avatarfull
                 ); 
